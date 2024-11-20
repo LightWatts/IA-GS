@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da Consulta</title>
+
+    <!-- Link para o Tailwind CSS para um design mais bonito -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Personalizações adicionais */
+        .card {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1f2937;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2d87f0;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Título principal -->
+            <h1 class="text-4xl font-semibold text-center mb-8 text-gray-800">Resultado da Consulta de CEP</h1>
+
+            <!-- Exibindo o endereço -->
+            <div class="card mb-6">
+                <div class="section-title">Endereço</div>
+                <p><strong>Logradouro:</strong> {{ endereco['logradouro'] }}</p>
+                <p><strong>Bairro:</strong> {{ endereco['bairro'] }}</p>
+                <p><strong>Cidade:</strong> {{ endereco['localidade'] }}</p>
+                <p><strong>UF:</strong> {{ endereco['uf'] }}</p>
+            </div>
+
+            <!-- Exibindo as previsões -->
+            <div class="card mb-6">
+                <div class="section-title">Previsões de Emissão de CO2</div>
+                <p><strong>Previsão de Emissão de CO2 (kg/ano):</strong> <span class="highlight">{{ co2 }}</span></p>
+                <p><strong>Classificação de Emissão:</strong> <span class="highlight">{{ emissao_class }}</span></p>
+            </div>
+
+            <!-- Explicação sobre a previsão -->
+            <div class="card">
+                <div class="section-title">O que significa a Previsão de Emissão de CO2?</div>
+                <p>A previsão de emissão de CO2 é uma estimativa sobre a quantidade de dióxido de carbono emitido anualmente em uma região com base no código de área (DDD) do CEP informado. Essa estimativa é feita por um modelo de regressão linear, que considera diversas variáveis associadas ao CEP e à localidade, ajudando a entender o impacto ambiental da área.</p>
+
+                <div class="section-title mt-4">Classificação "Baixa" e "Alta" de Emissão de CO2</div>
+                <p>A classificação de "Baixa" ou "Alta" de emissão de CO2 é um indicador de quão sustentável é a sua localidade em termos de emissão de gases de efeito estufa. Se a classificação for "Baixa", significa que a área tem um nível relativamente baixo de emissão de CO2, o que é favorável para o meio ambiente. Por outro lado, uma classificação "Alta" indica que a localidade tem um maior impacto ambiental devido a uma emissão elevada de CO2, o que pode ser um sinal de que medidas para reduzir a poluição ambiental podem ser necessárias.</p>
+            </div>
+
+            <!-- Botão para voltar -->
+            <div class="mt-8 text-center">
+                <a href="/" class="text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded-md">Voltar</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
